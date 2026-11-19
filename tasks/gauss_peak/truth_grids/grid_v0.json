@@ -1,0 +1,10 @@
+{
+ "description": "11 sealed seeds: mH 120 and 127 GeV at 1x/2x/3x SM (the requested grid), two nulls, one weak seed (below the scoring threshold), two extra masses. Fields not listed (bkg_norm, scale, smear) are drawn from the prior.",
+ "seeds": [
+  {"mH": 120.0, "mu": 1.0}, {"mH": 120.0, "mu": 2.0}, {"mH": 120.0, "mu": 3.0},
+  {"mH": 127.0, "mu": 1.0}, {"mH": 127.0, "mu": 2.0}, {"mH": 127.0, "mu": 3.0},
+  {"mH": 125.0, "mu": 0.0}, {"mH": 122.0, "mu": 0.0},
+  {"mH": 118.0, "mu": 0.5},
+  {"mH": 131.0, "mu": 2.0}, {"mH": 133.0, "mu": 1.5}
+ ]
+}

@@ -1,0 +1,5 @@
+request_max_retries = 20
+stream_max_retries = 20
+stream_idle_timeout_ms = 600000
+model_context_window = 1000000
+model_auto_compact_token_limit = 900000

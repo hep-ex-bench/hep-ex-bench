@@ -1,0 +1,6 @@
+{
+ "description": "width_toy smoke design: 5 sealed seeds, xi in {1, 8, 16, 24, 32}, one each (the SM-width seed stays sealed, so 'always report a large width' cannot pay). mu_on and bkg_norm drawn from the priors.",
+ "seeds": [
+  {"xi": 1.0}, {"xi": 8.0}, {"xi": 16.0}, {"xi": 24.0}, {"xi": 32.0}
+ ]
+}

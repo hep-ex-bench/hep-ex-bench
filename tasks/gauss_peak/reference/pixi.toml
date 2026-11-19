@@ -1,0 +1,14 @@
+# Runtime environment for this submission (contract v0.4): the reference and
+# attacker pipelines use scipy, which the base environment does not carry.
+[workspace]
+name = "submission-env"
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+python = "3.14.*"
+numpy = "*"
+scipy = "*"
+uproot = "*"
+awkward = "*"
+vector = "*"

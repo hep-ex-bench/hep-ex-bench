@@ -1,0 +1,9 @@
+{
+ "description": "4 sealed datasets: one nominal (every correction at its no-effect value) and three spanning the prior.",
+ "seeds": [
+  {"scale": 0.0, "res_pt": 0.0, "sf0": 1.0, "sf1": 0.0},
+  {"scale": -0.003, "res_pt": 0.004, "sf0": 0.97, "sf1": -0.02},
+  {"scale": 0.002, "res_pt": 0.011, "sf0": 0.99, "sf1": -0.005},
+  {"scale": 0.0035, "res_pt": 0.015, "sf0": 0.955, "sf1": -0.03}
+ ]
+}

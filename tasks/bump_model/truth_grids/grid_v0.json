@@ -1,0 +1,9 @@
+{
+ "description": "8 sealed seeds: five scorable signals between 120 and 133 GeV at 1.5x-3x SM, one weak signal, two nulls; the lepton momentum scale fixed away from 1 so that skipping the calibration shows.  bkg_norm is drawn from the prior.",
+ "seeds": [
+  {"mH": 120.0, "mu": 2.0, "scale": 0.992}, {"mH": 120.0, "mu": 1.0, "scale": 1.006},
+  {"mH": 127.0, "mu": 2.5, "scale": 1.008}, {"mH": 127.0, "mu": 1.5, "scale": 0.994},
+  {"mH": 131.0, "mu": 3.0, "scale": 0.991}, {"mH": 133.0, "mu": 2.0, "scale": 1.005},
+  {"mH": 125.0, "mu": 0.0, "scale": 0.993}, {"mH": 118.0, "mu": 0.0, "scale": 1.007}
+ ]
+}

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+suites/
+work/
+dist/
+submissions/
+.venv/
+.pixi/
+*.egg-info/
+**/.pixi/

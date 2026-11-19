@@ -1,0 +1,50 @@
+[workspace]
+name = "hep-ex-bench"
+version = "0.1.0"
+description = "Sealed-truth benchmark harness for autonomous HEP analysis agents"
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+python = ">=3.12,<3.15"
+numpy = ">=1.26"
+scipy = ">=1.11"
+uproot = ">=5.4"
+awkward = ">=2.6"
+vector = ">=1.4"
+bubblewrap = ">=0.9"
+pyhf = ">=0.7.6,<0.8"
+cabinetry = ">=0.6.0,<0.7"
+jax = "0.10.*"
+correctionlib = "==2.9.0"
+
+[pypi-dependencies]
+sbh = { path = ".", editable = true }
+
+[environments]
+default = { solve-group = "default" }
+agentbase = { features = ["agentbase"], no-default-feature = true }
+lepcalib = { features = ["agentbase", "lepcalib"], no-default-feature = true }
+
+[tasks]
+check = { cmd = "python checks/smoke.py --tier quick", description = "Quick tier of the gates (checks/smoke.py --tier quick): the consistency checks (seconds; after any edit)." }
+smoke = { cmd = "python checks/smoke.py", description = "Smoke tier, run before every push: the quick tier plus the batteries and the toy suite's build, closure and stress, in parallel (minutes; checks/smoke.py --help for -j, --only, --keep-going)." }
+contracts = { cmd = "python -m sbh.contract render", description = "Render every templated tasks/<task>/EVAL_CONTRACT.md from its template and the shared contract parts (seconds)." }
+build-toy = { cmd = "python -m sbh build-suite --task gauss_peak --name toy_dial --design tasks/gauss_peak/truth_grids/grid_v0.json --master-seed 2", description = "Build the toy gauss_peak suite under suites/ (seconds)." }
+closure = { cmd = "python -m sbh closure --suite suites/toy_dial", description = "Check the reference pipeline recovers every truth on the toy suite and set sigma_ref (seconds)." }
+stress = { cmd = "python -m sbh stress --suite suites/toy_dial --only reference,attacker_constant,attacker_crasher,attacker_inflator,attacker_memorizer,attacker_nocalib,attacker_symlink", description = "Score the reference and the attackers on the toy suite (seconds)." }
+sandbox = { cmd = "python -c 'from sbh.runner import bwrap_available, unshare_available; print(\"bwrap:\", bwrap_available(), \" unshare -rn:\", unshare_available())'", description = "Print which isolation mode the runner will use on this host (instant)." }
+model-verify = { cmd = "python sbh/kinds/binned_likelihood/verify.py", description = "Validate a declared MODEL.json: nominal fit and GOF, impacts, Z_exp, mass grid and coverage toys (minutes per dataset; append --help for arguments; docs/MODEL_VALIDATION.md)." }
+[feature.agentbase.dependencies]
+python = "3.14.*"
+numpy = "*"
+uproot = "*"
+awkward = "*"
+vector = "*"
+
+
+[feature.lepcalib.dependencies]
+root = ">=6.32"
+cms-combine = ">=11.0.0,<12"
+correctionlib = "==2.9.0"
+

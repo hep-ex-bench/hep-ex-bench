@@ -1,0 +1,17 @@
+[project]
+name = "sbh"
+version = "0.1.0"
+description = "Sealed-truth benchmark harness: freeze an agent's analysis repo, run it on sealed seeds, score recovered vs injected truths"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26", "scipy>=1.11"]
+
+[project.scripts]
+sbh = "sbh.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["sbh*", "tasks*"]
+namespaces = false
