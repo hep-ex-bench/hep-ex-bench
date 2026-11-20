@@ -1,11 +1,11 @@
 # HEP-Ex-Bench
 
-**HEP-Ex-Bench** benchmarks AI agents that carry out experimental high-energy physics measurements.  It evaluates an
-agent's analysis quantitatively with blind analysis and injection tests, the checks at the heart of an expert review.
-The agent develops a data analysis pipeline on a public dataset.  That single pipeline is then evaluated on sealed
-worlds: private datasets generated programmatically, with injected signals and with simulation settings varied within
-realistic detector uncertainties.  This tests both the accuracy and the robustness of the workflow.  The benchmarks
-are built from CMS open data.
+**HEP-Ex-Bench** evaluates agentic performance in physics analyses with sealed worlds.  It performs detailed
+quantitative evaluations of agent-driven analyses through the use of blind analysis and injection tests, which are
+critical in a typical expert review.  Agents develop a data analysis pipeline on a public dataset, while the evaluation
+is performed on programmatically generated sealed private datasets where signals are injected and simulation settings
+varied within realistic detector uncertainties.  By requiring agents to provide a single workflow that is evaluated
+across these "sealed worlds", the benchmark tests the accuracy and robustness of the workflows.
 
 The pipeline is a directory with `run.sh <dataset> <out>` that writes `RESULT.json`.  It is frozen, run offline on
 every sealed world and scored against the injected truths relative to an expert reference analysis
