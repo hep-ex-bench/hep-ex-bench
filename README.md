@@ -56,7 +56,7 @@ pixi run smoke     # the checks plus the test batteries and the toys' suite buil
    table above and `<task>` the id beside it, for example `HiggsLepMass` and `h4l`:
 
    ```bash
-   pixi exec --spec huggingface_hub hf download hep-ex-bench/<benchmark> --repo-type dataset --revision v1 \
+   pixi exec --spec huggingface_hub hf download hep-ex-bench/<benchmark> --repo-type dataset --revision v0.2 \
        --local-dir work/data/<benchmark>
    pixi run python -m sbh pack --task <task> --public-dataset work/data/<benchmark> --out work/dist
    pixi install -e agentbase    # the submission's runtime (lep_calib: pixi install -e lepcalib)
