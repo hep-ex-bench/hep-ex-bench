@@ -232,8 +232,8 @@ each task scores only its own POIs (`Task.pois`, `poi_scored_v2`).
 
 ## Gates (cheap first)
 
-- **`pixi run check`** (~10 s): the quick tier — contract render, lock files, bundles, attackers, task consistency.
-  After any edit.
+- **`pixi run check`** (~10 s): the quick tier — contract render, lock files, bundles, attackers, task consistency,
+  and the host sandbox (`checks/sandbox_check.py`: bwrap and `scripts/fleet/dev_sandbox.sh`).  After any edit.
 - **`pixi run smoke`** (an hour or so, steps in parallel): the push gate — the quick tier plus the grader batteries
   and each toy's suite build, closure and stress, a lane each.
 

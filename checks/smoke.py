@@ -34,6 +34,7 @@ WSTRESSED = ("reference,attacker_width_constant,attacker_width_crasher,attacker_
 
 STEPS = [
     ("agentbase", "pixi install -e agentbase", False, "quick"),
+    ("sandbox", "python checks/sandbox_check.py", False, "quick"),
     ("contracts", "python -m sbh.contract render --check", False, "quick"),
     ("locks", "python checks/locks_check.py", False, "quick"),
     ("balance", "python checks/balance_check.py", False, "quick"),

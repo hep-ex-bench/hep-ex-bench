@@ -44,9 +44,11 @@ for the bubblewrap sandbox in which submissions and agent sessions run (`pixi ru
 use).  Commands run from the repository's root unless a step says otherwise:
 
 ```bash
-pixi run check     # consistency checks
+pixi run check     # consistency checks and the host sandbox
 pixi run smoke     # the checks plus the test batteries and the toys' suite builds, closures and stress
 ```
+
+If the sandbox check fails, `docs/FAQ.md` covers the Ubuntu AppArmor restriction on bubblewrap.
 
 ### Run an agent on a benchmark
 
@@ -94,7 +96,7 @@ pixi run smoke     # the checks plus the test batteries and the toys' suite buil
 ```
 sbh/            the harness: suites, the sandboxed runner, scoring, participant bundles
 tasks/          one directory per task: the toys whole, the benchmarks' participant material
-docs/           the score (METRICS.md), adding a task, isolation, model validation
+docs/           the score (METRICS.md), adding a task, isolation, model validation, FAQ
 checks/         the consistency checks and the test batteries
 scripts/fleet/  the agent session scripts
 pixi.toml       the environments and tasks
