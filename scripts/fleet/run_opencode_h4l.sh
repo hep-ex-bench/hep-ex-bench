@@ -26,6 +26,6 @@ if [ -n "${SBH_AGENT_EFFORT:-}" ]; then
     printf '%s\n' "$LISTING" | "${RECORD[@]}" variant-check "$1" --model "$2" --level "$SBH_AGENT_EFFORT" || exit 3
     VARIANT=(--variant "$SBH_AGENT_EFFORT")
 fi
-timeout "$BUDGET_S" "$REPO/scripts/fleet/dev_sandbox.sh" "$PWD" -- opencode run --auto -m "$2" "${VARIANT[@]}" --print-logs --log-level WARN "$PROMPT" > ../$1.opencode.log 2>&1
+timeout "$BUDGET_S" "$REPO/scripts/fleet/dev_sandbox.sh" "$PWD" -- opencode run --auto -m "$2" "${VARIANT[@]}" --print-logs --log-level warn "$PROMPT" > ../$1.opencode.log 2>&1
 rc=$?
 echo "opencode exit=$rc" >> ../$1.opencode.log
