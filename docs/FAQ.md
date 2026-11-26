@@ -7,7 +7,8 @@ Ubuntu restricts unprivileged user namespaces through AppArmor
 environment — `<repo>/.pixi/envs/default/bin/bwrap`, which the fleet scripts put
 first on `PATH` — has no AppArmor profile, so the kernel refuses bwrap's uid map
 and `scripts/fleet/run_*_h4l.sh` exits before the agent starts.  This is a host
-policy, not a repository bug.
+policy, not a repository bug.  `pixi run check` includes `checks/sandbox_check.py`, so a host with this
+restriction fails the check instead of letting `sbh` fall back to un-isolated runs.
 
 Give that one binary the `userns` permission with a scoped profile.  From the
 repository root:
