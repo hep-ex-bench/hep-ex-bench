@@ -36,13 +36,26 @@ path; a profile line accepts only one path.
 
 Verify:
 
+- as `sudo` user:
 ```bash
-pixi run sandbox    # bwrap: True
-d=$(mktemp -d); scripts/fleet/dev_sandbox.sh "$d" -- /bin/true && echo "dev sandbox: ok"; rm -rf "$d"
+sudo aa-status | grep hep-ex-bench #should print "hep-ex-bench-bwrap"
 ```
 
-`unshare -rn` can remain `False`: only bwrap is exempted, and the runner prefers
-bwrap.
+- as regular user:
+```bash
+pixi run sandbox    # bwrap: True  unshare -rn: False
+pixi run python -c 'from sbh.runner import sandbox_mode; print(sandbox_mode())'    # bwrap
+d=$(mktemp -d)
+PATH="$PWD/.pixi/envs/default/bin:$PATH" scripts/fleet/dev_sandbox.sh "$d" -- /bin/true \
+    && echo "dev sandbox: ok"
+rm -rf "$d"
+```
+
+Only `bwrap: True` matters: the runner prefers bwrap, and `mode: bwrap` confirms
+it.  `unshare -rn` can remain `False`, because only the pixi bwrap is exempted.
+The fleet launchers put that bwrap first on `PATH` themselves; a bare
+`scripts/fleet/dev_sandbox.sh ...` from a shell without that prefix picks
+`/usr/bin/bwrap` and still fails.
 
 Undo (unload first, then remove the file so it does not return at boot):
 
